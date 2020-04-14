@@ -5,16 +5,16 @@ from setuptools.command.develop import develop
 
 class OldDevelopCommand(develop):
     def run(self):
-        print("magic_hw")
-        install.run(self)
+        print("SNAKE")
+        develop.run(self)
 
 
 class CustomDevelopCommand(OldDevelopCommand):
 
     def run(self):
-        super().run(super())
+        super().run()
         print("Hello, developer, how are you? :)")
-        install.run(self)
+        develop.run(self)
 
 
 ######
@@ -31,5 +31,8 @@ setup(
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
     ],
-    zip_safe=False
+    zip_safe=False,
+    cmdclass={
+        'develop': CustomDevelopCommand,
+    },
 )
